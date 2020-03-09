@@ -6,7 +6,7 @@
       <v-toolbar-title>Trello Clone</v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-btn flat  :to="{ name: 'Register'}">
+      <v-btn :to="{ name: 'Register'}">
          Register 
       </v-btn>
 

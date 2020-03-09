@@ -1,9 +1,9 @@
 
 
 <template>
-  <v-container>
-    <v-row class="text-center">
-      <v-col cols="6" class="text-center">
+  <v-container fluid>
+    <v-slide-y-transition mode="out-in">
+      <v-layout column align-center>
       <div class="text-header">
         Login
       </div>
@@ -29,9 +29,8 @@
 
 
   </v-form>
-      </v-col>
-    </v-row>
-
+    </v-layout>
+    </v-slide-y-transition>
   </v-container>
 </template>
 
@@ -50,6 +49,9 @@ name: 'login',
     passwordRules: [
       value => (value && value.length < 20 && value.length > 12) || 'Password must have a length of greater than 12 and less than 20'
     ],
-  })
+  }),
+  methods: {
+    
+  }
 }
 </script>
