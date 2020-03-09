@@ -2,33 +2,30 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
-      dark
     >
-      <div class="d-flex align-left">
-        Trello Clone
-      </div>
-
+      <v-toolbar-title>Trello Clone</v-toolbar-title>
       <v-spacer></v-spacer>
 
+      <v-btn flat  :to="{ name: 'Register'}">
+         Register 
+      </v-btn>
+
+      <v-btn flat :to="{name: 'Login'}">
+        Login
+      </v-btn>
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+    <router-view />
+
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
   data: () => ({
     //
   }),
