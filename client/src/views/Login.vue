@@ -10,6 +10,7 @@
       <v-form
     ref="form"
     v-model="valid"
+    @submit.prevent="login"
   >
     <v-text-field
       v-model="email"
@@ -25,7 +26,7 @@
     ></v-text-field>
 
 
-<v-btn class="mr-4" @click="register">Register</v-btn>
+<v-btn class="mr-4" type="submit" >Login</v-btn>
 
 
   </v-form>
@@ -43,7 +44,7 @@ name: 'login',
     email:'',
     emailRules: [
       value => !!value || 'Email is required',
-      value => /.+@.+\..+/.test(v) || 'Email must be valid'
+      value => /.+@.+\..+/.test(value) || 'Email must be valid'
     ],
     password: '',
     passwordRules: [
@@ -51,7 +52,9 @@ name: 'login',
     ],
   }),
   methods: {
+   login(){
     
+   }
   }
 }
 </script>

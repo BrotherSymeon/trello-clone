@@ -8,6 +8,7 @@
     ref="form"
     v-model="valid"
     @submit.prevent="register"
+    v-if="!loading"
   >
     <v-text-field
       v-model="user.email"
@@ -41,6 +42,14 @@
 
 
   </v-form>
+
+<v-progress-circular
+      v-if="loading"
+      :size="70"
+      :width="7"
+      color="primary"
+      indeterminate
+    ></v-progress-circular>
 </v-layout>
 </v-slide-y-transition>
   </v-container>
@@ -48,6 +57,10 @@
 
 <script>
 /* eslint-disable */
+import { models } from 'feathers-vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
+
+
 export default {
   name: 'register',
   data: (vm) => ({
@@ -77,10 +90,21 @@ export default {
       v => (v === vm.user.password) || 'Passwords must match'
     ],
   }),
+  computed: {
+    ...mapState('users', { loading : 'isCreatePending' }),
+  },
   methods: {
     register(){
-      
+       
       if(this.valid) {
+        console.log(models.api)
+        const user = new models.api.User(this.user)
+        user.save().then(user => {
+          console.log((user))
+          this.$router.push('/login')
+        })
+
+        console.log('User ', user)
         console.log('registering NOW', this.user)
       }
     }
